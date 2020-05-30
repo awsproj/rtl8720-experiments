@@ -1,0 +1,9 @@
+
+rak473 module
+https://adelectronics.ru/2017/04/30/pinout-%D0%BC%D0%BE%D0%B4%D1%83%D0%BB%D1%8F-rak473/
+
+
+  has "3060A-LF" label on board. it looks similar to a emw110. 
+  internally uses a RTL8711AM and 25q16ct.
+
+

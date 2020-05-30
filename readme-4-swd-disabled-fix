@@ -1,0 +1,47 @@
+
+
+when swd pins are disabled in firmware, flasher and debugger won't be able 
+to connect to the device to update it further or to debug. 
+
+segger suggests to place a delay at the beginning to give emulator a gap 
+to put the processor to a halt. 
+
+to fix without the initial delay:
+jump the cs pin on spi flash to ground throug a small resistor. 
+download a new firmware from a flasher. 
+when the console or the flasher shows it is downloading, remove the jumper. 
+when it is done, a corrupt image will be flashed. 
+reboot with the corrupt image, it won't be able to execute previous firmware. 
+now, flash a new image as usual. 
+
+
+log snippet shows when cs tied to ground and when booting a corrupt image:
+when downloading was seen the jumper was removed.
+
+== Rtl8710c IoT Platform ==
+Chip VID: 5, Ver: 1
+ROM Version: v2.1
+[BOOT Err]Parttiton Table Header(Plain Text) Verification Err!
+StartUp@0x0: Invalid RAM Img Signature!
+
+== Rtl8710c IoT Platform ==
+Chip VID: 5, Ver: 1
+ROM Version: v2.1
+[BOOT Err]Parttiton Table Header(Plain Text) Verification Err!
+StartUp@0x0: Invalid RAM Img Signature!
+[SPIF Err]spic_init : Calibration Fail, switch back to one bit mode!
+
+Realtek Ameba-ZII Flash Loader Build @ 12:34:37, Jun 11 2019
+Downloading..............
+Flash Load Done
+
+== Rtl8710c IoT Platform ==
+Chip VID: 5, Ver: 1
+ROM Version: v2.1
+
+== Boot Loader ==
+Sep 19 2019:09:46:45
+[MISC Err]Hash Result Incorrect!
+Boot Load Err!
+
+
